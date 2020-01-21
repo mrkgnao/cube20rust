@@ -1,0 +1,67 @@
+
+fn slice_u64(x: u64, start: u64, length: u64) -> u64 {
+    // (x >> start) & ((1 << length) - 1)
+    (x >> (64 - start - length)) & ((1 << length) - 1)
+}
+
+fn ppr_u64_bits(x: u64) {
+    let xstr = format!("{:064b}", x);
+    // let mut out = String::new();
+    let mut i = 1;
+    for ch in xstr.chars() {
+        if ch == '0' {
+            print!("{}", "0".black());
+        } else {
+            print!("{}", "1".white());
+        }
+
+        if i % 16 == 0 {
+            print!(" ");
+        } else if i % 4 == 0 {
+            print!(".");
+        }
+        i += 1;
+    }
+    println!("");
+}
+
+fn main() {
+    let x = 0b0000_0000_0000_0101__0000_0000_0000_0000__0000_0000_0010_0000__0000_0000_0000_0000;
+    ppr_u64_bits(x);
+}
+
+enum Colour {
+    W,
+    Y,
+    B,
+    G,
+    O,
+    R,
+}
+
+enum Corner {
+    URF,
+    UFL,
+    ULB,
+    UBR,
+    DFR,
+    DLF,
+    DBL,
+    DRB,
+}
+
+enum Edge {
+    UR,
+    UF,
+    UL,
+    UB,
+    DR,
+    DF,
+    DL,
+    DB,
+    FR,
+    FL,
+    BL,
+    BR,
+}
+

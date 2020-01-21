@@ -1,0 +1,36 @@
+[package]
+name = "alginate"
+version = "0.1.0"
+authors = ["mrkgnao <chow.soham@gmail.com>"]
+edition = "2018"
+autotests = false
+
+[lib]
+proc-macro = true
+
+[[test]]
+name = "tests"
+path = "tests/runner.rs"
+
+[dev-dependencies]
+trybuild = "1.0"
+macrotest = "0.1"
+
+[dependencies]
+colored = "1.9"
+bit_collection = "0.2.3"
+lazy_static = "1.4.0"
+rand = "0.7.2"
+bitvec = "0.16.1"
+syn = "1.0"
+quote = "1.0"
+
+[dependencies.alginate_cube]
+path = "alginate_cube/"
+
+[workspace]
+members = [".", "alginate_cube/"]
+
+[profile.release]
+debug = true
+lto = true
